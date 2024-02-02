@@ -5,13 +5,10 @@ const pageModel = require("./pages");
 
 router.post("/create", async function(req, res) {
     try {
-        const { pagename, username, description, content } = req.body;
-        const newPage = await pageModel.create({
-            pagename,
-            username,
-            description,
-            content,
-        });
+        console.log(req.body);
+        const newPage = new pageModel(req.body);
+        
+        await newPage.save();
         res.json(newPage);
     } catch (error) {
         console.error(error);
