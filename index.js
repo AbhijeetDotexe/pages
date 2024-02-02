@@ -69,7 +69,7 @@ router.put("/:id", async function(req, res) {
 router.delete("/:id", async function(req, res) {
     try {
         const pageId = req.params.id;
-        const deletedPage = await pageModel.findByIdAndDelete(pageId);
+        const deletedPage = await pageModel.findOneAndDelete({pageId});
         if (!deletedPage) {
             res.json({ error: "Page not found" });
             return;
