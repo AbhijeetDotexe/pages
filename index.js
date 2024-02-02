@@ -5,7 +5,7 @@ const crypto = require("crypto");
 
 router.post("/create", async function (req, res) {
   try {
-    req.body.id = JSON.stringify(crypto.randomUUID());
+    req.body.id = crypto.randomUUID();
     console.log(req.body);
     const newPage = new pageModel(req.body);
 
